@@ -5,7 +5,7 @@
 <script>
 import { watchEffect } from "@vue/runtime-core"
 import { AppState } from "../AppState.js"
-import { Pop } from "../utils/Pop.js"
+import Pop from "../utils/Pop.js"
 import { accountService } from "../services/AccountService.js"
 
 export default {
@@ -34,22 +34,5 @@ export default {
 }
 </script>
 
-<!-- <style lang="scss" scoped>
-
-</style>
-
-<template>
-  
-</template>
-
-<script>
-export default {
-  setup(){
-    return{}
-  }
-}
-</script>
-
 <style lang="scss" scoped>
-
-</style> -->
+</style>
