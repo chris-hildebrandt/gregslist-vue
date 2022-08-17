@@ -9,8 +9,9 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-fab" title="Add Car" data-bs-toggle="modal" data-bs-target="#car-form" @click="setActiveCar()"><i class="mdi mdi-plus f-18 text-white"></i></button>
   </div>
-  <Modal>
+  <Modal id="car-form">
     <!-- VV this goes in the modal "slot" -->
     <CarForm />
   </Modal>
@@ -19,8 +20,7 @@
 <script>
 import { carsService } from "../Services/CarsService.js"
 import { computed, onMounted } from "@vue/runtime-core"
-import CarCard from "../components/CarCard.vue"
-import CarForm from "../components/CarForm.vue"
+import { logger } from "../utils/Logger.js"
 import { AppState } from "../AppState.js"
 import Pop from "../utils/Pop.js"
 
@@ -31,20 +31,28 @@ export default {
         await carsService.getCars();
       }
       catch (error) {
-        logger.error("[]", error);
-        Pop.error(error);
+        logger.error("[get cars]", error)
+        Pop.error(error)
       }
     }
     onMounted(() => {
-      getCars();
-    });
+      getCars()
+    })
     return {
-      cars: computed(() => AppState.cars)
-    };
-  },
-  components: { CarCard, CarForm }
+      cars: computed(() => AppState.cars),
+      setActiveCar() {
+        carsService.setActiveCar({})
+      }
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.btn-fab {
+  position: fixed;
+  border-radius: 50%;
+  bottom: 3rem;
+  right: 2rem;
+}
 </style>

@@ -40,7 +40,7 @@ class CarsService {
     let res = await api.put(`/api/cars/${carData.id}`, carData)
     let car = new Car(res.data)
     let carIndex = AppState.cars.findIndex(c => c.id == carData.id)
-    AppState.cars = AppState.cars.splice(carIndex, 1, car)
+    AppState.cars.splice(carIndex, 1, car)
   }
 }
 
