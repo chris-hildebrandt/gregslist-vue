@@ -4,16 +4,17 @@
 
 
 <template>
-  <div class="card p-3 bg-white elevation-2">
+  <div class="card p-3 bg-white elevation-2" :title="car.make">
     <div class="card-body">
-      <router-link to="">
+      <!--                                         VVV must match the string in router.js -->
+      <router-link :to="{ name: "Car", params: { carId: car.id } }">
         <img class="img-fluid" :src="car.img" alt="">
         <div class="p-2">
           <h4 class="text-center">{{ car.make }} | {{ car.model }} | {{ car.year }}</h4>
-          <!-- <p>{{ this.description }}</p>
+          <p>{{ this.description }}</p>
         <p class="text-end text-success m-0">$<b>{{ car.price }}</b></p>
         <button class="btn btn-danger" @click="deleteCar(car)">Delete Listing</button>
-        <button class="btn btn-warning" @click="adjustCar(car)">Edit Listing</button> -->
+        <button class="btn btn-warning" @click="adjustCar(car)">Edit Listing</button>
         </div>
       </router-link>
     </div>
@@ -30,7 +31,6 @@ export default {
       type: Car, required: true,
     },
     setup() {
-      // put delete here
     }
   }
 }
