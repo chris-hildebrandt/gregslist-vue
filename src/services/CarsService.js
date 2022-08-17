@@ -5,6 +5,11 @@ import { api } from "./AxiosService.js";
 
 class CarsService {
 
+  async getCarById(carId) {
+    const res = await api.get(`api/cars/${carId}`)
+    AppState.activeCar = new Car(res.data)
+  }
+
   setActiveCar(car){
     AppState.activeCar = car
   }
@@ -15,24 +20,13 @@ class CarsService {
   }
 
   async createCar(newCarFormData) {
-    //  to add to AppState:
-    // AppState.cars = [...AppState.cars, new Car(newCar)]
-    // to add to API:
-    // this links to the axiosService so you don't have to type the entire url
     let res = await api.post('/api/cars', newCarFormData)
-    // comma after the address to post the data
-    // always look at the response from the API with a console.log/debugger or looking at the network tab in devtools
     let car = new Car(res.data)
     AppState.cars = [...AppState.cars, car]
-    // one line AppState.cars = [AppState.cars, new Car(res.data)] but this way an error points to one operation instead of 3
-    // one line per operation is best practice for debugging
-
   }
 
   async deleteCar(carId) {
     await api.delete(`/api/cars/${carId}`)
-    // for the delete you cannot do (url, id) because it interprets the request as delete the entire resource. delete requests have to look like this: (`/url/${id}`)
-    // you don't need a try catch in the service, it goes in the controller
     AppState.cars = AppState.cars.filter(c => c.id != carId)
   }
 
@@ -45,6 +39,3 @@ class CarsService {
 }
 
 export const carsService = new CarsService()
-
-// get and delete do not send data, so no comma
-// puts and posts you send data

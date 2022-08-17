@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { carsService } from "../Services/CarsService.js"
+import { carsService } from "../services/CarsService.js"
 import { computed, onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger.js"
 import { AppState } from "../AppState.js"

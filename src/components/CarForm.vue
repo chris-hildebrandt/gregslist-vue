@@ -33,6 +33,7 @@ import { ref } from "@vue/reactivity"
 import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 import { carsService } from "../services/CarsService.js"
+import { watchEffect } from "@vue/runtime-core"
 
 export default {
   setup() {

@@ -13,8 +13,8 @@
           <h4 class="text-center">{{ car.make }} | {{ car.model }} | {{ car.year }}</h4>
           <p>{{ car.description }}</p>
           <p class="text-end text-success m-0">$<b>{{ car.price }}</b></p>
-          <button class="btn btn-danger" @click="deleteCar(car)">Delete Listing</button>
-          <button class="btn btn-warning" @click="toggleCarForm(car)">Edit Listing</button>
+          <!-- <button class="btn btn-danger" @click="deleteCar(car)">Delete Listing</button>
+          <button class="btn btn-warning" @click="toggleCarForm(car)">Edit Listing</button> -->
         </div>
       </router-link>
     </div>

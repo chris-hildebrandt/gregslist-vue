@@ -6,7 +6,7 @@ export class Car{
     this.model = data.model || ''
     this.year = data.year || 0
     this.price = data.price || 500 
-    this.img = data.img || ''
+    this.img = data.img || data.imgURL
     this.description = data.description || ''
   }
 }
