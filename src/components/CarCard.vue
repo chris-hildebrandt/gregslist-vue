@@ -7,14 +7,14 @@
   <div class="card p-3 bg-white elevation-2" :title="car.make">
     <div class="card-body">
       <!--                                         VVV must match the string in router.js -->
-      <router-link :to="{ name: "Car", params: { carId: car.id } }">
+      <router-link :to="{ name: 'Car', params: { carId: car.id } }">
         <img class="img-fluid" :src="car.img" alt="">
         <div class="p-2">
           <h4 class="text-center">{{ car.make }} | {{ car.model }} | {{ car.year }}</h4>
-          <p>{{ this.description }}</p>
-        <p class="text-end text-success m-0">$<b>{{ car.price }}</b></p>
-        <button class="btn btn-danger" @click="deleteCar(car)">Delete Listing</button>
-        <button class="btn btn-warning" @click="adjustCar(car)">Edit Listing</button>
+          <p>{{ car.description }}</p>
+          <p class="text-end text-success m-0">$<b>{{ car.price }}</b></p>
+          <button class="btn btn-danger" @click="deleteCar(car)">Delete Listing</button>
+          <button class="btn btn-warning" @click="toggleCarForm(car)">Edit Listing</button>
         </div>
       </router-link>
     </div>
@@ -24,16 +24,32 @@
 <script>
 // imported for intellisense VVV
 import { Car } from "../Models/Car.js";
+import { carsService } from "../Services/CarsService.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    car: {
-      type: Car, required: true,
-    },
-    setup() {
+    car: { type: Car, required: true }
+  },
+  setup() {
+    return {
+      toggleCarForm(car) {
+        carsService.setActiveCar(car)
+      },
+      async deleteCar(car) {
+        try {
+          const yes = await Pop.confirm('Do you really want to permanently delete the listing for this car? (this cannot be undone!)')
+          if (!yes) { return }
+          await carsService.deleteCar(car.id)
+        } catch (error) {
+          logger.error('[deleting car]', error);
+          Pop.error(error);
+        }
+      }
     }
   }
 }
+
 </script>
 
 <style>
