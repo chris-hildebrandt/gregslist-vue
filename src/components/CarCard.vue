@@ -4,7 +4,7 @@
 
 
 <template>
-  <div class="card p-3 bg-white elevation-2" :title="car.make">
+  <div class="card p-3 bg-white elevation-2 selectable selectable-no" :title="car.make">
     <div class="card-body">
       <!--                                         VVV must match the string in router.js -->
       <router-link :to="{ name: 'Car', params: { carId: car.id } }">
@@ -23,9 +23,10 @@
 
 <script>
 // imported for intellisense VVV
-import { Car } from "../Models/Car.js";
-import { carsService } from "../Services/CarsService.js";
 import Pop from "../utils/Pop.js";
+import { Car } from "../Models/Car.js";
+import { logger } from "../utils/Logger.js";
+import { carsService } from "../Services/CarsService.js";
 
 export default {
   props: {
@@ -52,5 +53,5 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
