@@ -7,3 +7,5 @@ export class Account {
     // TODO add additional properties if needed
   }
 }
+
+// bcw-sandbox.herokuapp.com/api/models/account

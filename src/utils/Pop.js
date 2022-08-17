@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-export default class Pop {
+export class Pop {
   /**
  *
  * @param {string} title The title text.
