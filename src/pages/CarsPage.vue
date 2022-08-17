@@ -10,6 +10,7 @@
   </div>
 </div>
 <Modal>
+  <!-- VV this goes in the modal "slot" -->
   <CarForm/>
 </Modal>
 </template>
