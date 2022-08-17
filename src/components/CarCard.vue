@@ -24,9 +24,9 @@
 <script>
 // imported for intellisense VVV
 import Pop from "../utils/Pop.js";
-import { Car } from "../Models/Car.js";
+import { Car } from "../models/Car.js";
 import { logger } from "../utils/Logger.js";
-import { carsService } from "../Services/CarsService.js";
+import { carsService } from "../services/CarsService.js";
 
 export default {
   props: {
