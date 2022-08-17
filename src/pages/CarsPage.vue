@@ -1,25 +1,26 @@
 <template>
 <div class="cars-page">cars page is up</div>
-<div class="">
-  <div class="">
-    <div class="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" v-for="c in cars" :key="c.id">
       <div class="">
-        <CarCard/>
+        <CarCard :car="c" />
       </div>
     </div>
   </div>
 </div>
 <Modal>
-  <!-- write carform, and modal -->
+  <CarForm/>
 </Modal>
 </template>
 
 <script>
 import { computed, onMounted } from "@vue/runtime-core"
-import { Pop } from "../utils/Pop.js"
+import Pop from "../utils/Pop.js"
 import { carsService } from "../Services/CarsService.js"
 import { AppState } from "../AppState.js"
 import CarCard from "../components/CarCard.vue"
+import CarForm from "../components/CarForm.vue"
 
 export default {
     setup() {
@@ -39,7 +40,7 @@ export default {
             cars: computed(() => AppState.cars)
         };
     },
-    components: { CarCard }
+    components: { CarCard, CarForm }
 }
 </script>
 
